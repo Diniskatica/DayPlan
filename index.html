@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DayPlan — мини-планировщик</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4f46e5">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка с авторизацией -->
+        <header class="header">
+            <h1>📋 DayPlan</h1>
+            <div id="auth-block" class="auth">
+                <!-- Сюда динамически вставляется форма/инфо о пользователе -->
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main>
+            <div class="date-header">
+                <h2>Сегодня, <span id="current-date"></span></h2>
+                <button id="clear-completed" class="btn-secondary">Очистить выполненные</button>
+            </div>
+
+            <!-- Форма добавления задачи -->
+            <div class="add-task">
+                <input type="text" id="task-input" placeholder="Что нужно сделать?" maxlength="200">
+                <button id="add-btn" class="btn-primary">+ Добавить</button>
+            </div>
+
+            <!-- Список задач -->
+            <ul id="tasks-list" class="tasks-list">
+                <!-- Задачи рендерятся динамически -->
+            </ul>
+
+            <!-- Навигация -->
+            <div class="nav">
+                <a href="index.html" class="nav-link active">Сегодня</a>
+                <a href="archive.html" class="nav-link">Архив</a>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Задачи сохраняются локально в вашем браузере</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для регистрации/входа -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="auth-forms">
+                <!-- Формы вставляются из auth.js -->
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Регистрация Service Worker для PWA
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+        
+        // Отображение текущей даты
+        document.getElementById('current-date').textContent = 
+            new Date().toLocaleDateString('ru-RU', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long' 
+            });
+    </script>
+</body>
+</html>

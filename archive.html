@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архив — DayPlan</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📁 Архив задач</h1>
+            <div id="auth-block" class="auth"></div>
+        </header>
+
+        <main>
+            <div class="nav">
+                <a href="index.html" class="nav-link">Сегодня</a>
+                <a href="archive.html" class="nav-link active">Архив</a>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="week">За неделю</button>
+                <button class="filter-btn" data-filter="month">За месяц</button>
+            </div>
+
+            <div id="archive-list" class="archive-list">
+                <!-- Архивные задачи загружаются динамически -->
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a href="index.html" class="btn-secondary">← На главную</a>
+        </footer>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+    <script src="archive.js"></script>
+</body>
+</html>
